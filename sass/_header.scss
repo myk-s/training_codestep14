@@ -1,0 +1,129 @@
+@charset "utf-8";
+
+@forward "config/base";
+@use "config/base" as bs;
+
+// z-index 重なり順：#header = .mask < #nav =.toggle_btn
+#header {
+    height: 80px;
+    width: 100%;
+    background-color: bs.$white;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+
+    .wrapper {
+        height: 100%;
+        position: relative;
+
+        &.flex-container {
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            width: 180px;
+        }
+
+        #nav {
+            position: fixed;
+            top: 0;
+            left: -300px;   // 左に隠しておく（.openの際、左から出現する）
+            padding: 36px 50px;
+            z-index: 20;
+            opacity: 0;
+            transition: all .5s;
+
+            .nav-list {
+                font-size: bs.rem(14);
+
+                li {
+                    text-transform: uppercase;
+                    margin-bottom: 15px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        // ハンバーガーメニュー
+        .toggle_btn {
+            width: 30px;
+            height: 30px;
+            position: relative;
+            z-index: 20;
+            transition: all .5s;
+
+            span {
+                position: absolute;
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: bs.$font-color;
+                border-radius: 4px;
+                transition: all .5s;
+
+                &:nth-child(1) {
+                    top: 10px;
+                }
+
+                &:nth-child(2) {
+                    bottom: 10px;
+                }
+            }
+        }
+
+        // メニューを開いた際にページ全体を覆う要素（通常時は隠す）
+        .mask {
+            display: none;
+            transition: all .5s;
+        }
+    }
+
+    // wrapper要素にopenクラスを付与されたとき＝ハンバーガーメニューを開いた時のスタイル
+    &.open {
+        .wrapper {
+            #nav {
+                left: 0;    // 左からnav出現
+                opacity: 1;
+                
+                .nav-list {
+                    li {
+                        a {
+                            color: bs.$white;
+                        }
+                    }
+                }
+            }
+
+            .toggle_btn {
+                span {
+                    background-color: bs.$white;
+                    
+                    &:nth-child(1) {
+                        transform: translateY(4px) rotate(-45deg);
+                    }
+
+                    &:nth-child(2) {
+                        transform: translateY(-4px) rotate(45deg);
+                    }
+                }
+            }
+
+            // メニューを開いている時は、全体を黒背景にする
+            .mask {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(bs.$nav-color, .8);
+                z-index: 10;
+                cursor: pointer;
+            }
+        }
+    }
+}

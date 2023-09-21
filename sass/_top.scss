@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+@forward "config/base";
+@use "config/base" as bs;
+
+#top {
+    margin-top: 80px;
+    margin-bottom: 105px;
+
+    @include bs.mq {
+        margin-bottom: 90px;
+    }
+
+    .wrapper {
+        text-align: center;
+
+        .grid-container {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+
+            @include bs.mq {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .product-box {
+                margin-bottom: 40px;
+                
+                a {
+                    img {
+                        margin-bottom: 8px;
+                    }
+    
+                    .product-title, .product-text {
+                        text-align: left;
+                    }
+                }
+            }
+        }
+
+        .view-more {
+            font-size: bs.rem(14);
+        }
+    }
+}

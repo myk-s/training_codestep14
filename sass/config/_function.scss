@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+// pixel -> rem 変換関数
+$baseFontSize: 16;
+
+@function rem($pixels) {
+    @return $pixels / $baseFontSize * 1rem;
+}
+
+// letter-spacing
+@function ls($spacing) {
+    @return $spacing / 1000 * 1em;
+}
+
+// line-height
+@function lh($lineHeight, $fontSize) {
+    @return round(($lineHeight / $fontSize) * 100) / 100
+}

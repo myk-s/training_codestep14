@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+@forward "config/base";
+@use "config/base" as bs;
+
+#about {
+    margin-top: 120px;
+    margin-bottom: 110px;
+
+    @include bs.mq {
+        margin-bottom: 90px;
+    }
+
+    .wrapper {
+        .about-wrapper {
+            max-width: 600px;
+            
+            .page-title {
+                margin-bottom: 30px;
+            }
+
+            p {
+                font-size: bs.rem(14);
+                margin-bottom: 25px;
+            }
+        }
+    }
+}

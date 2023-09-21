@@ -1,0 +1,86 @@
+@charset "utf-8";
+
+@forward "config/base";
+@use "config/base" as bs;
+
+#item {
+    margin-top: 120px;
+    margin-bottom: 105px;
+
+    @include bs.mq {
+        margin-bottom: 90px;
+    }
+
+    .wrapper {
+        text-align: center;
+        
+        .item-wrapper {
+            max-width: 800px;
+
+            .page-title {
+                text-align: left;
+                margin-bottom: 30px;
+            }
+            
+            & > .flex-container {
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 60px;
+    
+                @include bs.mq {
+                    flex-direction: column;
+                }
+    
+                img {
+                    width: 50%;
+    
+                    @include bs.mq {
+                        width: 100%;
+                        margin-bottom: 30px;
+                    }
+                }
+    
+                .item-info {
+                    width: 42%;
+                    text-align: left;
+    
+                    @include bs.mq {
+                        width: 100%;
+                    }
+    
+                    .item-text {
+                        font-size: bs.rem(14);
+                        margin-bottom: 50px;
+    
+                        @include bs.mq {
+                            margin-bottom: 55px;
+                        }
+                    }
+    
+                    .item-price {
+                        margin-bottom: 30px;
+                    }
+    
+                    .item-details {
+                        &.flex-container {
+                            align-content: center;
+                            flex-wrap: wrap;
+    
+                            dt {
+                                width: 30%;
+                            }
+    
+                            dd {
+                                width: 70%;
+                            }
+                        }
+                    }
+                }
+            }
+    
+            .back {
+                font-size: bs.rem(14);
+            }
+        }
+    }
+}

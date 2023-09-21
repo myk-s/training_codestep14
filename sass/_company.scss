@@ -1,0 +1,77 @@
+@charset "utf-8";
+
+@forward "config/base";
+@use "config/base" as bs;
+
+#company {
+    margin-top: 120px;
+    margin-bottom: 105px;
+
+    @include bs.mq {
+        margin-bottom: 90px;
+    }
+
+    .wrapper {
+        .company-wrapper {
+            max-width: 600px;
+            
+            .page-title {
+                margin-bottom: 30px;
+            }
+
+            .company-info {
+                margin-bottom: 20px;
+
+                &.flex-container {
+                    align-items: flex-start;
+                    flex-wrap: wrap;
+
+                    @include bs.mq {
+                        flex-direction: column;
+                    }
+
+                    dt, dd {
+                        font-size: bs.rem(14);
+                        padding: 18px 10px;
+                        border-bottom: 1px solid bs.$border-color;
+
+                        &:last-of-type {
+                            border-bottom: none;
+                        }
+
+                        @include bs.mq {
+                            width: 100%;
+                        }
+                    }
+
+                    dt {
+                        width: 35%;
+
+                        @include bs.mq {
+                            width: 100%;
+                            border-bottom: none;
+                            padding-bottom: 5px;
+                        }
+                    }
+                    
+                    dd {
+                        width: 65%;
+
+                        @include bs.mq {
+                            width: 100%;
+                            padding-top: 0;
+                        }
+                    }
+                }
+            }
+
+            .google-map {
+                filter: grayscale(1);
+
+                iframe {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

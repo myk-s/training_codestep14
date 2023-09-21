@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+@forward "config/base";
+@use "config/base" as bs;
+
+#footer {
+    padding: 20px 0;
+
+    .wrapper {
+        &.flex-container {
+            justify-content: space-between;
+            align-items: center;
+
+            @include bs.mq {
+                flex-direction: column;
+                align-items: start;
+            }
+
+            .sns-list {
+                @include bs.mq {
+                    margin-bottom: 5px;
+                }
+
+                &.flex-container {
+                    align-items: center;
+
+                    li {
+                        text-transform: uppercase;
+                        margin-right: 30px;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+
+            .copy-right {
+                font-size: bs.rem(10);
+            }
+        }
+    }
+}
